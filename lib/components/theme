@@ -1,0 +1,12 @@
+import 'package:flutter/material.dart';
+
+ThemeData theme() {
+  final theme = ThemeData();
+
+  return ThemeData(
+    appBarTheme: AppBarTheme(
+      backgroundColor: Colors.grey,
+    ),
+    primaryColor: Colors.blue
+  );
+}
