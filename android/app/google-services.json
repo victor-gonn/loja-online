@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "705884029161",
+    "project_id": "lojaonline2",
+    "storage_bucket": "lojaonline2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:705884029161:android:abcb0d8b44b346d111f078",
+        "android_client_info": {
+          "package_name": "com.example.lojaonline2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzjO7vb0z0_LG8VHWTUXPPiNWoy4U_6PY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

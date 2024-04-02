@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lojaonline2/screens/home_tab';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -8,12 +9,17 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  final _pageController = PageController();
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-        body: Center(
-          child: Text('loja online'),
-        ),
-      );
+    return PageView(
+      physics: NeverScrollableScrollPhysics(),
+      controller: _pageController,
+      children: [
+       HomeTab()
+      ],
+    );
   }
 }
