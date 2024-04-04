@@ -20,6 +20,8 @@ dependencies:
   url_launcher: ^6.2.5
   path_provider: ^2.1.2
   firebase_core: ^2.28.0
+  firebase_auth: ^4.19.0
+  cloud_firestore: ^4.16.0
   
 
 dev_dependencies:
