@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lojaonline2/screens/home_tab';
+import 'package:lojaonline2/screens/home_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
