@@ -2,6 +2,8 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class HomeTab extends StatelessWidget {
   const HomeTab({super.key});
@@ -49,17 +51,27 @@ class HomeTab extends StatelessWidget {
                       ),
                     );
                   } else {
-                    print(snapshot.data!.docs.length);
                     return SliverToBoxAdapter(
-                      child: Container(
-                        height: 200,
-                        alignment: Alignment.center,
-                        child: CircularProgressIndicator(
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(Colors.black),
+                        child: GridView.custom(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      gridDelegate: SliverQuiltedGridDelegate(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 1,
+                          crossAxisSpacing: 1,
+                          repeatPattern: QuiltedGridRepeatPattern.inverted,
+                          pattern: snapshot.data!.docs.map((e) {
+                            return QuiltedGridTile(e['y'], e['x']);
+                          }).toList()),
+                      childrenDelegate: SliverChildBuilderDelegate(
+                        (context, index) => FadeInImage.memoryNetwork(
+                          placeholder: kTransparentImage,
+                          image: snapshot.data!.docs[index]['image'],
+                          fit: BoxFit.cover,
                         ),
+                        childCount: snapshot.data!.docs.length,
                       ),
-                    );
+                    ));
                   }
                 })
           ],
