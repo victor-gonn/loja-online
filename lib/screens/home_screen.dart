@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lojaonline2/screens/drawer.dart';
 import 'package:lojaonline2/screens/home_tab.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -18,7 +19,10 @@ class _HomeScreenState extends State<HomeScreen> {
       physics: NeverScrollableScrollPhysics(),
       controller: _pageController,
       children: [
-       HomeTab()
+       Scaffold(
+        body: HomeTab(),
+        drawer: CustomDrawer(),
+       )
       ],
     );
   }
