@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:transparent_image/transparent_image.dart';
 
-class HomeTab extends StatelessWidget {
-  const HomeTab({super.key});
+class InitTab extends StatelessWidget {
+  const InitTab({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class HomeTab extends StatelessWidget {
               backgroundColor: Colors.transparent,
               elevation: 0,
               flexibleSpace: FlexibleSpaceBar(
-                title: Text("novidades"),
+                title: Text("Novidades"),
                 centerTitle: true,
               ),
             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lojaonline2/screens/drawer.dart';
 import 'package:lojaonline2/screens/home_tab.dart';
+import 'package:lojaonline2/screens/product_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -20,8 +21,16 @@ class _HomeScreenState extends State<HomeScreen> {
       controller: _pageController,
       children: [
        Scaffold(
-        body: HomeTab(),
-        drawer: CustomDrawer(),
+        body: InitTab(),
+        drawer: CustomDrawer(pageController: _pageController,),
+       ),
+       Scaffold(
+        appBar: AppBar(
+          title: Text("Produtos"),
+          centerTitle: true,
+        ),
+        drawer: CustomDrawer(pageController: _pageController),
+        body: ProductsTab(),
        )
       ],
     );
