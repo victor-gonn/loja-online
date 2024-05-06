@@ -4,7 +4,7 @@ class ProductData {
 
   late String id;
   late String title;
-  late double price;
+  late int price;
   late List images;
   late List size;
 
