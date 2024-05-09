@@ -6,13 +6,17 @@ class ProductScreen extends StatefulWidget {
   const ProductScreen({super.key, required this.product});
 
   final ProductData product;
+  
 
   @override
+  // ignore: no_logic_in_create_state
   State<ProductScreen> createState() => _ProductScreenState(product);
 }
 
 class _ProductScreenState extends State<ProductScreen> {
   final ProductData product;
+
+   String? size;
 
   _ProductScreenState(this.product);
 
@@ -36,23 +40,84 @@ class _ProductScreenState extends State<ProductScreen> {
                     enableInfiniteScroll: false,
                     disableCenter: true)),
           ),
-          Padding(padding: EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text(product.title,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w500
-              ),
-              maxLines: 3,),
-              Text('R\$ ${product.price}',
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold
-              ),)
-            ],
-          ),)
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  product.title,
+                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                  maxLines: 3,
+                ),
+                Text(
+                  'R\$ ${product.price}',
+                  style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                const Text("Tamanho",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500
+                ),),
+                SizedBox(
+                  height: 34,
+                  child: GridView(
+                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    scrollDirection: Axis.horizontal,
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 1,
+                      mainAxisSpacing: 8,
+                      childAspectRatio: 0.5,
+                      
+                    ),
+                    children: 
+                      product.size.map((s) {
+                        return GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              size = s;
+                            });
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(4)),
+                              border: Border.all(
+                                color: s == size ? Colors.blue : Colors.grey,
+                                width: 3
+                              )
+                            ),
+                            width: 50,
+                            alignment: Alignment.center,
+                            child: Text(s,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold
+                            ),),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                    ),
+                    SizedBox(height: 16,),
+                    SizedBox(height: 44,
+                    child: ElevatedButton(onPressed: size != null ? 
+                    () {} : null,
+                     child: Text('adicionar ao carrinho')),),
+                     SizedBox(
+                      height: 16,
+                     ),
+                     Text("Descrição",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500
+                ),),
+                Text(product.description,
+                style: TextStyle(fontSize: 16),)
+              ],
+            ),
+          )
         ],
       ),
     );

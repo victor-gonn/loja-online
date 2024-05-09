@@ -7,6 +7,7 @@ class ProductData {
   late int price;
   late List images;
   late List size;
+  late String description;
 
 
   ProductData.DocumentSnapshot(DocumentSnapshot snapshot) {
@@ -15,6 +16,7 @@ class ProductData {
     price = snapshot.get('price');
     images = snapshot.get('images');
     size = snapshot.get('size');
+    description = snapshot.get('description');
 
   }
 
