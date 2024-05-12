@@ -3,6 +3,7 @@ import 'package:lojaonline2/components/theme.dart';
 
 import 'package:lojaonline2/screens/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:lojaonline2/screens/login_screen.dart';
 import 'firebase_options.dart';
 
 
@@ -23,7 +24,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
-      home: HomeScreen(),
+      home: LoginScreen(),
       theme: theme(),
       debugShowCheckedModeBanner: false,
     );
