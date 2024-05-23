@@ -7,7 +7,7 @@ class UserModel extends Model {
   bool isLoading = false;
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  late User user;
+  User? user;
   Map<String, dynamic> userData = Map();
 
   void SignIn() {
@@ -18,22 +18,33 @@ class UserModel extends Model {
     notifyListeners();
   }
 
+  void signOut() async {
+   await _auth.signOut();
+
+   userData = Map();
+   
+   notifyListeners();
+  }
+
   void SignUp({required Map<String, dynamic> userData, required String pass,
      required VoidCallback onSuccess, required VoidCallback onFailure}) {
-    isLoading = true;
+    
+    
+    notifyListeners();
 
-    _auth
-        .createUserWithEmailAndPassword(
+    
+
+    _auth.createUserWithEmailAndPassword(
             email: userData['email'], password: pass)
-        .then((user) async {
+        .then((userCredential) async {
+      user = userCredential.user;
       
+     
 
-      await _saveUserData(userData, user);
-
-      onSuccess();
-
+      await _saveUserData(userData);
+       onSuccess();
       isLoading = false;
-
+      
       notifyListeners();
     }).catchError((e) {
       onFailure();
@@ -46,8 +57,12 @@ class UserModel extends Model {
     
   }
 
-  Future _saveUserData(Map<String, dynamic> userData, UserCredential user) async {
+  bool isLoggedIn() {
+    return user != null;
+  }
+
+  Future _saveUserData(Map<String, dynamic> userData, ) async {
       this.userData = userData;
-     await FirebaseFirestore.instance.collection('users').doc(user.user?.uid).set(userData);
+     await FirebaseFirestore.instance.collection('users').doc(user?.uid).set(userData);
     }
 }
