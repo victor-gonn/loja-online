@@ -13,12 +13,20 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
 
+  final _pass = TextEditingController();
+  final _emailController = TextEditingController();
+
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+  
+  
+
   var showPassword = false;
 
   @override
   Widget build(BuildContext context) {
     print('build 1');
     return Scaffold(
+      key: _scaffoldKey,
         appBar: AppBar(
           title: Text("Entrar"),
           centerTitle: true,
@@ -48,6 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: EdgeInsets.all(16),
                   children: [
                     TextFormField(
+                      controller: _emailController,
                       decoration: InputDecoration(hintText: "Email"),
                       keyboardType: TextInputType.emailAddress,
                       validator: (text) {
@@ -62,6 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     StatefulBuilder(builder: (context, setState) {
                       return TextFormField(
+                        controller: _pass,
                         obscureText: !showPassword,
                         decoration: InputDecoration(
                           hintText: 'Senha',
@@ -100,7 +110,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {}
-                          model.SignIn();
+                          model.SignIn(
+                            email: _emailController.text ,
+                            pass: _pass.text,
+                            onSuccess: _onSuccess,
+                            onFailure: _onFailed,
+                          );
                         },
                         child: Text(
                           'Entrar',
@@ -112,5 +127,16 @@ class _LoginScreenState extends State<LoginScreen> {
                 ));
           }
         }));
+  }
+
+  void _onSuccess() {
+    Navigator.of(context).pop();
+  }
+
+  void _onFailed() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text("Falha ao realizar login"),
+      duration: Duration(seconds: 2),)
+    );
   }
 }
