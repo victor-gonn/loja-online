@@ -76,6 +76,7 @@ class CustomDrawer extends StatelessWidget {
                                                   LoginScreen()));
                                     } else {
                                       model.signOut();
+                                      Navigator.of(context).pop();
                                     }
                                   },
                                 )

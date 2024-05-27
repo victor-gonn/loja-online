@@ -44,6 +44,7 @@ class UserModel extends Model {
    await _auth.signOut();
 
    userData = Map();
+   user = null;
    
    notifyListeners();
   }
@@ -75,15 +76,15 @@ class UserModel extends Model {
     });
   }
 
-  void RecoveryPass()  {
-    
+  void RecoveryPass(String email) {
+    _auth.sendPasswordResetEmail(email: email);
   }
 
   bool isLoggedIn() {
     return user != null;
   }
 
-  Future _saveUserData(Map<String, dynamic> userData, ) async {
+  Future _saveUserData(Map<String, dynamic> userData) async {
       this.userData = userData;
      await FirebaseFirestore.instance.collection('users').doc(user?.uid).set(userData);
     }

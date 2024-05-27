@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lojaonline2/Models/cart_model.dart';
 import 'package:lojaonline2/Models/user_model.dart';
 import 'package:lojaonline2/components/theme.dart';
 
@@ -23,11 +24,16 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScopedModel<UserModel>(
       model: UserModel(),
-      child: MaterialApp(
+      child: ScopedModelDescendant<UserModel>(
+        builder: (context, child, model) {
+          return ScopedModel<CartModel>(
+        model: CartModel(model), 
+        child: MaterialApp(
         home: HomeScreen(),
         theme: theme(),
         debugShowCheckedModeBanner: false,
-      ),
+      ),);
+        })
     );
   }
 }

@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/material.dart';
 import 'package:lojaonline2/components/product_tile.dart';
-import 'package:lojaonline2/components/products_data.dart';
+import 'package:lojaonline2/data/products_data.dart';
 
 class CategoryTab extends StatelessWidget {
   const CategoryTab({super.key, required this.snapshot});

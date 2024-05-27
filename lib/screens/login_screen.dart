@@ -17,8 +17,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController();
 
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  
-  
 
   var showPassword = false;
 
@@ -26,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     print('build 1');
     return Scaffold(
-      key: _scaffoldKey,
+        key: _scaffoldKey,
         appBar: AppBar(
           title: Text("Entrar"),
           centerTitle: true,
@@ -98,7 +96,22 @@ class _LoginScreenState extends State<LoginScreen> {
                     Align(
                       alignment: Alignment.bottomRight,
                       child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            if (_emailController.text.isEmpty) {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                content: Text("Digite seu email"),
+                                duration: Duration(seconds: 2),
+                              ));
+                            } else {
+                              model.RecoveryPass(_emailController.text);
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                content: Text("Confira seu email cadastrado"),
+                                duration: Duration(seconds: 2),
+                              ));
+                            }
+                          },
                           child: Text(
                             'Esqueci minha senha',
                             textAlign: TextAlign.right,
@@ -111,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {}
                           model.SignIn(
-                            email: _emailController.text ,
+                            email: _emailController.text,
                             pass: _pass.text,
                             onSuccess: _onSuccess,
                             onFailure: _onFailed,
@@ -134,9 +147,9 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _onFailed() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text("Falha ao realizar login"),
-      duration: Duration(seconds: 2),)
-    );
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text("Falha ao realizar login"),
+      duration: Duration(seconds: 2),
+    ));
   }
 }
