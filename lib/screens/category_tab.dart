@@ -47,13 +47,17 @@ class CategoryTab extends StatelessWidget {
               childAspectRatio: 0.65), 
               itemCount: snapshot.data?.docs.length,
             itemBuilder: (context, index){
-              return ProductTile("grid", ProductData.DocumentSnapshot(snapshot.data!.docs[index]));
+              ProductData data =  ProductData.DocumentSnapshot(snapshot.data!.docs[index]);
+              data.category = this.snapshot.id;
+              return ProductTile("grid", data);
             }),
             ListView.builder(
               padding: EdgeInsets.all(4),
               itemCount: snapshot.data?.docs.length,
               itemBuilder: (context, index){
-              return ProductTile("list", ProductData.DocumentSnapshot(snapshot.data!.docs[index]));
+                ProductData data =  ProductData.DocumentSnapshot(snapshot.data!.docs[index]);
+              data.category = this.snapshot.id;
+              return ProductTile("list", data);
             })
           ]);
           }

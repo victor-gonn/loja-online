@@ -11,11 +11,15 @@ class UserModel extends Model {
   User? user;
   Map<String, dynamic> userData = Map();
 
+  //o metodo static é uma alternativa ao uso do ScopedModelDescendent
+  static UserModel of(BuildContext context) => ScopedModel.of<UserModel>(context);
+
   @override
   void addListener(VoidCallback listener) {
     // TODO: implement addListener
     super.addListener(listener);
     _loadCurrentUser();
+    
   }
   
 

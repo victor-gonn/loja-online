@@ -1,4 +1,4 @@
-import 'dart:html';
+
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:lojaonline2/data/products_data.dart';
@@ -11,6 +11,7 @@ class CartData {
   late String size;
 
   late ProductData productData;
+   CartData();
 
   CartData.DocumentSnapshot(DocumentSnapshot snapshot) {
     cartId = snapshot.id;
@@ -27,7 +28,7 @@ class CartData {
       'productId' : productId,
       'quantity' : quantity,
       'size' : size,
-      'product' : productData.toResumeMap()
+      //'product' : productData.toResumeMap()
     };
   }
 }
