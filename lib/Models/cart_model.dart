@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:lojaonline2/Models/user_model.dart';
-import 'package:lojaonline2/data/cart_data.dart';
+import 'package:lojaonline2/DATA/cart_data.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class CartModel extends Model{

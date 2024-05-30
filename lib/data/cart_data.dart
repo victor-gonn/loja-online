@@ -1,7 +1,7 @@
 
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:lojaonline2/data/products_data.dart';
+import 'package:lojaonline2/DATA/products_data.dart';
 
 class CartData {
   late String cartId;

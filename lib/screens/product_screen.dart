@@ -2,8 +2,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:lojaonline2/Models/cart_model.dart';
 import 'package:lojaonline2/Models/user_model.dart';
-import 'package:lojaonline2/data/cart_data.dart';
-import 'package:lojaonline2/data/products_data.dart';
+import 'package:lojaonline2/DATA/cart_data.dart';
+import 'package:lojaonline2/DATA/products_data.dart';
+import 'package:lojaonline2/components/cart_buttom.dart';
 import 'package:lojaonline2/screens/login_screen.dart';
 
 class ProductScreen extends StatefulWidget {
@@ -31,6 +32,7 @@ class _ProductScreenState extends State<ProductScreen> {
         title: Text(product.title),
         centerTitle: true,
       ),
+      floatingActionButton: CartButton(),
       body: ListView(
         children: [
           AspectRatio(

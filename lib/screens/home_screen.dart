@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lojaonline2/components/cart_buttom.dart';
 import 'package:lojaonline2/screens/drawer.dart';
 import 'package:lojaonline2/screens/home_tab.dart';
 import 'package:lojaonline2/screens/product_tab.dart';
@@ -23,6 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
        Scaffold(
         body: InitTab(),
         drawer: CustomDrawer(pageController: _pageController,),
+        floatingActionButton: CartButton(),
        ),
        Scaffold(
         appBar: AppBar(
@@ -31,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         drawer: CustomDrawer(pageController: _pageController),
         body: ProductsTab(),
+        floatingActionButton: CartButton(),
        )
       ],
     );
