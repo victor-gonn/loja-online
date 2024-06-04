@@ -25,7 +25,7 @@ class ProductTile extends StatelessWidget {
                   AspectRatio(
                     aspectRatio: 0.815,
                     child: Image.network(
-                      product.images[0],
+                      product.images?[0],
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -34,12 +34,12 @@ class ProductTile extends StatelessWidget {
                       padding: EdgeInsets.all(8),
                       child: Column(
                         children: [
-                          Text(product.title,
+                          Text(product.title!,
                           style: TextStyle(
                             fontWeight: FontWeight.w500
                           ),),
                           Text(
-                            'R\$ ${product.price.toStringAsFixed(2)}',
+                            'R\$ ${product.price?.toStringAsFixed(2)}',
                             style: TextStyle(
                               color: Theme.of(context).primaryColor,
                               fontSize: 17,
@@ -55,7 +55,7 @@ class ProductTile extends StatelessWidget {
               children: [
                 Flexible(flex: 1,
                   child: Image.network(
-                    product.images[0],
+                    product.images?[0],
                       fit: BoxFit.cover,
                       height: 200,
                   )),
@@ -65,12 +65,12 @@ class ProductTile extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(product.title,
+                          Text(product.title!,
                           style: TextStyle(
                             fontWeight: FontWeight.w500
                           ),),
                           Text(
-                            'R\$ ${product.price.toStringAsFixed(2)}',
+                            'R\$ ${product.price?.toStringAsFixed(2)}',
                             style: TextStyle(
                               color: Theme.of(context).primaryColor,
                               fontSize: 17,

@@ -10,8 +10,9 @@ class CartData {
   late int quantity;
   late String size;
 
-  late ProductData productData;
-   CartData();
+  ProductData? productData;
+   
+  CartData();
 
   CartData.DocumentSnapshot(DocumentSnapshot snapshot) {
     cartId = snapshot.id;

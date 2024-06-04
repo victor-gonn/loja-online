@@ -29,7 +29,7 @@ class _ProductScreenState extends State<ProductScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(product.title),
+        title: Text(product.title!),
         centerTitle: true,
       ),
       floatingActionButton: CartButton(),
@@ -38,7 +38,7 @@ class _ProductScreenState extends State<ProductScreen> {
           AspectRatio(
             aspectRatio: 0.9,
             child: CarouselSlider(
-                items: product.images.map((url) {
+                items: product.images?.map((url) {
                   return Image.network(url);
                 }).toList(),
                 options: CarouselOptions(
@@ -52,7 +52,7 @@ class _ProductScreenState extends State<ProductScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  product.title,
+                  product.title!,
                   style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                   maxLines: 3,
                 ),
@@ -80,7 +80,7 @@ class _ProductScreenState extends State<ProductScreen> {
                       
                     ),
                     children: 
-                      product.size.map((s) {
+                      product.size!.map((s) {
                         return GestureDetector(
                           onTap: () {
                             setState(() {
@@ -115,8 +115,8 @@ class _ProductScreenState extends State<ProductScreen> {
                         CartData cartData = CartData();
                         cartData.size = size!;
                         cartData.quantity = 1;
-                        cartData.productId = product.id;
-                        cartData.category = product.category;
+                        cartData.productId = product.id!;
+                        cartData.category = product.category!;
 
                         CartModel.of(context).addCartItem(cartData);
                       } else {
@@ -135,7 +135,7 @@ class _ProductScreenState extends State<ProductScreen> {
                   fontSize: 16,
                   fontWeight: FontWeight.w500
                 ),),
-                Text(product.description,
+                Text(product.description!,
                 style: TextStyle(fontSize: 16),)
               ],
             ),
