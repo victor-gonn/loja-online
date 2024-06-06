@@ -14,7 +14,7 @@ class CartData {
    
   CartData();
 
-  CartData.DocumentSnapshot(DocumentSnapshot snapshot) {
+  CartData.fromDocument(DocumentSnapshot snapshot) {
     cartId = snapshot.id;
     category = snapshot.get('category');
     productId = snapshot.get('productId');

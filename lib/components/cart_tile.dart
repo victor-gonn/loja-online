@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:lojaonline2/DATA/cart_data.dart';
 import 'package:lojaonline2/DATA/products_data.dart';
+import 'package:lojaonline2/Models/cart_model.dart';
 
 class CardTile extends StatelessWidget {
   const CardTile( this.cartData ,{super.key });
@@ -40,17 +41,19 @@ class CardTile extends StatelessWidget {
                   fontWeight: FontWeight.bold),),
                   Row(children: [
                     IconButton(
-                      onPressed: () {
-
-                      }, 
+                      onPressed: cartData.quantity < 1 ? () {
+                        CartModel.of(context).decrementProduct(cartData);
+                      } : null,
                       icon: Icon(Icons.remove)),
                      Text(cartData.quantity.toString()),
                     IconButton(
                       onPressed: () {
-
+                        CartModel.of(context).incrementProduct(cartData);
                       }, 
                       icon: Icon(Icons.add)),
-                    ElevatedButton(onPressed: (){}, 
+                    ElevatedButton(onPressed: (){
+                      CartModel.of(context).removeCartItem(cartData);
+                    }, 
                     child: Text('Remover'),
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.grey[500]
@@ -67,8 +70,8 @@ class CardTile extends StatelessWidget {
     return Card(
       margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       child: cartData.productData == null ? 
-      FutureBuilder<DocumentSnapshot>(future: FirebaseFirestore.instance.collection('products')
-      .doc(cartData.category).collection('itens').doc(cartData.productId).get(), 
+      StreamBuilder<DocumentSnapshot>(stream: FirebaseFirestore.instance.collection('products')
+      .doc(cartData.category).collection('itens').doc(cartData.productId).snapshots(), 
       builder: (context, snapshot) {
         if(snapshot.hasData) {
           cartData.productData = ProductData.fromDocument(snapshot.data!);
