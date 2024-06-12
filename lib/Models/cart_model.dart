@@ -11,11 +11,13 @@ class CartModel extends Model{
  final UserModel? user;
 
  List<CartData> product = [];
+ 
 
  static CartModel of(BuildContext context) => ScopedModel.of<CartModel>(context);
 
-  CartModel(Object? model, {this.user}) {
-    _loadCartItems();
+  CartModel( {this.user}) {
+   _loadCartItems();
+   print("LOADCART CHAMADO");
     
   }
 
@@ -25,6 +27,8 @@ class CartModel extends Model{
     FirebaseFirestore.instance.collection('users').doc(user?.user?.uid).collection('cart')
     .add(cartData.toMap()).then((doc) {
       cartData.cartId = doc.id;
+
+      print('coleçao id ${FirebaseFirestore.instance.collection('users').doc(user?.user?.uid).get()}');
     });
     notifyListeners();
 
@@ -38,24 +42,27 @@ class CartModel extends Model{
   }
 
   void decrementProduct(CartData cartData) {
-    cartData.quantity--;
+    cartData.quantity = cartData.quantity - 1;
     FirebaseFirestore.instance.collection('users').doc(user?.user?.uid).collection('cart')
     .doc(cartData.cartId).update(cartData.toMap());
     notifyListeners();
   }
 
   void incrementProduct(CartData cartData) {
-    cartData.quantity = cartData.quantity! + 1;
+    cartData.quantity = cartData.quantity + 1;
     FirebaseFirestore.instance.collection('users').doc(user?.user?.uid).collection('cart')
     .doc(cartData.cartId).set(cartData.toMap(), SetOptions(merge: true));
     notifyListeners();
   }
 
   void _loadCartItems() async {
-    QuerySnapshot query = (await FirebaseFirestore.instance.collection('users').doc(user?.user?.uid)
-    .collection('cart').get());
+    QuerySnapshot query = await FirebaseFirestore.instance.collection('users').doc(user?.user?.uid)
+    .collection('cart').get();
+   
 
-    product = query.docs.map((doc) => CartData.fromDocument(doc)).toList();
+    product = await query.docs.map((doc) => CartData.fromDocument(doc)).toList();
+
+    
 
     notifyListeners();
   }

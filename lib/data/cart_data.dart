@@ -29,7 +29,7 @@ class CartData {
       'productId' : productId,
       'quantity' : quantity,
       'size' : size,
-      //'product' : productData.toResumeMap()
+      'product' : productData?.toResumeMap()
     };
   }
 }

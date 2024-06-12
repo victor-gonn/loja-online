@@ -27,7 +27,7 @@ class MainApp extends StatelessWidget {
       child: ScopedModelDescendant<UserModel>(
         builder: (context, child, model) {
           return ScopedModel<CartModel>(
-        model: CartModel(model), 
+        model: CartModel(user: model), 
         child: MaterialApp(
         home: HomeScreen(),
         theme: theme(),

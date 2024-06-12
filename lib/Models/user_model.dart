@@ -68,7 +68,7 @@ class UserModel extends Model {
       
      
 
-      await _saveUserData(userData);
+      await _saveUserData(userData, userCredential);
        onSuccess();
       isLoading = false;
       
@@ -88,9 +88,9 @@ class UserModel extends Model {
     return user != null;
   }
 
-  Future _saveUserData(Map<String, dynamic> userData) async {
+  Future _saveUserData(Map<String, dynamic> userData, UserCredential userCredential) async {
       this.userData = userData;
-     await FirebaseFirestore.instance.collection('users').doc(user?.uid).set(userData);
+     await FirebaseFirestore.instance.collection('users').doc(userCredential.user?.uid).set(userData);
     }
 
   Future _loadCurrentUser() async{

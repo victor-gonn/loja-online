@@ -38,7 +38,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 'Criar conta',
                 style: TextStyle(fontSize: 15, color: Colors.white),
               ),
-            )
+              style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blue))
+            
           ],
         ),
         body:

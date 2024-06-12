@@ -41,7 +41,7 @@ class CardTile extends StatelessWidget {
                   fontWeight: FontWeight.bold),),
                   Row(children: [
                     IconButton(
-                      onPressed: cartData.quantity < 1 ? () {
+                      onPressed: cartData.quantity > 1 ? () {
                         CartModel.of(context).decrementProduct(cartData);
                       } : null,
                       icon: Icon(Icons.remove)),
@@ -70,8 +70,8 @@ class CardTile extends StatelessWidget {
     return Card(
       margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       child: cartData.productData == null ? 
-      StreamBuilder<DocumentSnapshot>(stream: FirebaseFirestore.instance.collection('products')
-      .doc(cartData.category).collection('itens').doc(cartData.productId).snapshots(), 
+      FutureBuilder<DocumentSnapshot>(future: FirebaseFirestore.instance.collection('products')
+      .doc(cartData.category).collection('itens').doc(cartData.productId).get(), 
       builder: (context, snapshot) {
         if(snapshot.hasData) {
           cartData.productData = ProductData.fromDocument(snapshot.data!);
