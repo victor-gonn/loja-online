@@ -11,6 +11,10 @@ class CartModel extends Model{
  final UserModel? user;
 
  List<CartData> product = [];
+
+ String? cupomCode;
+
+ int discountPercent = 0;
  
 
  static CartModel of(BuildContext context) => ScopedModel.of<CartModel>(context);
@@ -19,6 +23,11 @@ class CartModel extends Model{
    _loadCartItems();
    print("LOADCART CHAMADO");
     
+  }
+
+  void setCupom(String? cupomCode, int discountPercent) {
+    this.cupomCode = cupomCode;
+    this.discountPercent = discountPercent;
   }
 
   void addCartItem(CartData cartData) {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lojaonline2/components/cart_buttom.dart';
 import 'package:lojaonline2/screens/drawer.dart';
 import 'package:lojaonline2/screens/home_tab.dart';
-import 'package:lojaonline2/screens/product_tab.dart';
+import 'package:lojaonline2/components/product_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
