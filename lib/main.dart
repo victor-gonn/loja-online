@@ -3,7 +3,7 @@ import 'package:lojaonline2/Models/cart_model.dart';
 import 'package:lojaonline2/Models/user_model.dart';
 import 'package:lojaonline2/components/theme.dart';
 
-import 'package:lojaonline2/screens/home_screen.dart';
+import 'package:lojaonline2/screens/products_list.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'firebase_options.dart';

@@ -20,7 +20,7 @@ class ProductsTab extends StatelessWidget {
                 return CategoreTile(snapshot: e,
                 );
               }).toList(),
-              color: Colors.grey
+              color: Colors.red
             ).toList();
 
           return ListView(
