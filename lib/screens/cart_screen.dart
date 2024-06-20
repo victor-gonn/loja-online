@@ -76,7 +76,12 @@ class _CartScreenState extends State<CartScreen> {
                 ),
                 DiscountCart(),
                 ShipCard(),
-                CartResume((){})
+                CartResume(() async{
+                  String? orderId = await model.finalOrder();
+                  if(orderId != null) {
+                    return print(orderId);
+                  }
+                })
               ],
             );
             

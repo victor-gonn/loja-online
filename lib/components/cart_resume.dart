@@ -6,6 +6,7 @@ class CartResume extends StatelessWidget {
    CartResume(this.buy, {super.key});
 
    final VoidCallback buy;
+   
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +16,11 @@ class CartResume extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child:
             ScopedModelDescendant<CartModel>(builder: (context, child, model) {
+
+              double price = model.getProductsPrice();
+              double discount = model.getDiscount();
+              double ship = model.getShipPrice();
+
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -26,25 +32,25 @@ class CartResume extends StatelessWidget {
               const SizedBox(
                 height: 12,
               ),
-              const Row(
+               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [Text("Subtotal"), Text("R\$ 0.00")],
+                children: [Text("Subtotal"), Text("R\$ ${price}")],
               ),
               const Divider(),
-              const Row(
+               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [Text("Desconto"), Text("R\$ 0.00")],
+                children: [Text("Desconto"), Text("R\$ ${discount}")],
               ),
               const Divider(),
-              const Row(
+               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [Text("Entrega"), Text("R\$ 0.00")],
+                children: [Text("Entrega"), Text("R\$ ${ship}")],
               ),
               const Divider(),
               const SizedBox(
                 height: 12,
               ),
-              const Row(
+               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
@@ -52,7 +58,7 @@ class CartResume extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.w500),
                   ),
                   Text(
-                    "R\$ 0.00",
+                    "R\$ ${price + ship - discount}",
                     style: TextStyle(color: Colors.blue),
                   )
                 ],

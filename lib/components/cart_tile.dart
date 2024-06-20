@@ -15,6 +15,8 @@ class CardTile extends StatelessWidget {
   Widget build(BuildContext context) {
 
     Widget _buildContent() {
+
+      CartModel.of(context).updatePrices();
       return Row(
         children: [
           Container(
