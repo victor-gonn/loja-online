@@ -29,7 +29,8 @@ class _ProductScreenState extends State<ProductScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(product.title!),
+        backgroundColor: Theme.of(context).primaryColor,
+        title: Text(product.title!, style: Theme.of(context).textTheme.titleMedium,),
         centerTitle: true,
       ),
       floatingActionButton: CartButton(),

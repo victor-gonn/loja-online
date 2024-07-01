@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:lojaonline2/components/cart_buttom.dart';
-import 'package:lojaonline2/components/orders_tab.dart';
-import 'package:lojaonline2/screens/drawer.dart';
-import 'package:lojaonline2/screens/home_tab.dart';
-import 'package:lojaonline2/components/product_tab.dart';
+import 'package:lojaonline2/Tabs/orders_tab.dart';
+import 'package:lojaonline2/components/drawer.dart';
+import 'package:lojaonline2/screens/home_screen.dart';
+import 'package:lojaonline2/Tabs/product_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -29,8 +29,9 @@ class _HomeScreenState extends State<HomeScreen> {
        ),
        Scaffold(
         appBar: AppBar(
-          title: Text("Produtos"),
+          title: Text("Produtos", style: Theme.of(context).textTheme.titleMedium),
           centerTitle: true,
+          backgroundColor: Theme.of(context).primaryColor,
         ),
         drawer: CustomDrawer(pageController: _pageController),
         body: ProductsTab(),
@@ -40,6 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: AppBar(
           title: Text("Meus pedidos"),
           centerTitle: true,
+          backgroundColor: Theme.of(context).primaryColor,
           ),
           body: OrderTab(),
           drawer: CustomDrawer(pageController: _pageController),),

@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:lojaonline2/components/theme.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class InitTab extends StatelessWidget {
@@ -13,8 +14,8 @@ class InitTab extends StatelessWidget {
     Widget _buildBodyBack() => Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
-            Color.fromARGB(255, 211, 115, 130),
-            Color.fromARGB(255, 253, 181, 168)
+            Theme.of(context).colorScheme.primary,
+            Theme.of(context).colorScheme.secondary
           ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
         );
 
@@ -29,10 +30,12 @@ class InitTab extends StatelessWidget {
               backgroundColor: Colors.transparent,
               elevation: 0,
               flexibleSpace: FlexibleSpaceBar(
-                title: Text("Novidades"),
+                title: Text("Novidades        ", 
+                style: Theme.of(context).textTheme.titleMedium),
                 centerTitle: true,
               ),
             ),
+            
             FutureBuilder<QuerySnapshot>(
                 future: FirebaseFirestore.instance
                     .collection('roupas')

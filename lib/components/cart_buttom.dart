@@ -6,7 +6,7 @@ class CartButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
+    return FloatingActionButton(backgroundColor: Theme.of(context).primaryColor,
       onPressed: () {
         Navigator.of(context).push(
           MaterialPageRoute(builder: (context) =>CartScreen())

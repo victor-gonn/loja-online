@@ -26,21 +26,11 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
-          title: Text("Entrar"),
+          title: Text("Entrar",style: Theme.of(context).textTheme.titleMedium,),
+          backgroundColor: Theme.of(context).primaryColor,
           centerTitle: true,
           actions: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => SignupScreen()));
-              },
-              child: const Text(
-                'Criar conta',
-                style: TextStyle(fontSize: 15, color: Colors.white),
-              ),
-              style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue))
-            
+           
           ],
         ),
         body:
@@ -137,7 +127,21 @@ class _LoginScreenState extends State<LoginScreen> {
                           style: TextStyle(fontSize: 18, color: Colors.white),
                         ),
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue))
+                            backgroundColor: Theme.of(context).primaryColor)),
+                            SizedBox(height: 24,),
+                             ElevatedButton(
+              
+              onPressed: () {
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => SignupScreen()));
+              },
+              child: const Text(
+                'Criar conta',
+                style: TextStyle(fontSize: 18, color: Colors.white),
+              ),
+              style: ElevatedButton.styleFrom(
+                            backgroundColor: Theme.of(context).primaryColor))
+            
                   ],
                 ));
           }

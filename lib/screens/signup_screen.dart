@@ -24,7 +24,8 @@ class _SignupScreenState extends State<SignupScreen> {
     return Scaffold(
       key: _scaffoldKey,
         appBar: AppBar(
-          title: Text("Criar conta"),
+          backgroundColor: Theme.of(context).primaryColor,
+          title: Text("Criar conta",style: Theme.of(context).textTheme.titleMedium,),
           centerTitle: true,
         ),
         body:
@@ -52,6 +53,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     controller: _emailController,
                     decoration: InputDecoration(
                       hintText: "Email",
+                      
                     ),
                     validator: (text) {
                       if (text!.isEmpty || !text.contains('@')) {
@@ -119,7 +121,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue))
+                          backgroundColor: Theme.of(context).primaryColor))
                 ],
               ));
         }));

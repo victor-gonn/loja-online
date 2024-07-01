@@ -3,7 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:lojaonline2/Models/user_model.dart';
-import 'package:lojaonline2/components/order_tile.dart';
+import 'package:lojaonline2/Tiles/order_tile.dart';
 import 'package:lojaonline2/screens/login_screen.dart';
 
 class OrderTab extends StatelessWidget {

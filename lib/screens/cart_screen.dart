@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lojaonline2/Models/cart_model.dart';
 import 'package:lojaonline2/Models/user_model.dart';
 import 'package:lojaonline2/components/cart_resume.dart';
-import 'package:lojaonline2/components/cart_tile.dart';
+import 'package:lojaonline2/Tiles/cart_tile.dart';
 import 'package:lojaonline2/components/discount_cart.dart';
 import 'package:lojaonline2/components/ship_card.dart';
 import 'package:lojaonline2/screens/login_screen.dart';
@@ -21,7 +21,8 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Meu Carrinho'),
+        backgroundColor: Theme.of(context).primaryColor,
+        title: Text('Meu Carrinho',style: Theme.of(context).textTheme.titleMedium,),
         actions: [
           Container(
               padding: EdgeInsets.only(right: 8),
@@ -31,7 +32,8 @@ class _CartScreenState extends State<CartScreen> {
                   int p = model.product.length;
                   return Text(
                     '${p ?? 0} ${p == 1 ? 'item' : 'itens'}',
-                    style: TextStyle(fontSize: 17),
+                    style: TextStyle(fontSize: 17, color: Colors.white),
+                    
                   );
                 },
               ))

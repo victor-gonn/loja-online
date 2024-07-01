@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:lojaonline2/Models/user_model.dart';
-import 'package:lojaonline2/components/drawer_tile.dart';
+import 'package:lojaonline2/Tiles/drawer_tile.dart';
 import 'package:lojaonline2/screens/login_screen.dart';
 import 'package:scoped_model/scoped_model.dart';
 
@@ -16,12 +16,13 @@ class CustomDrawer extends StatelessWidget {
     Widget _buildDrawerBack() => Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(colors: const [
-            Color.fromARGB(255, 203, 216, 241),
+            Color.fromARGB(255, 188, 206, 243),
             Colors.white
           ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
         );
 
     return Drawer(
+      
       child: Stack(
         children: [
           _buildDrawerBack(),
@@ -48,7 +49,7 @@ class CustomDrawer extends StatelessWidget {
                         bottom: 0,
                         child: ScopedModelDescendant<UserModel>(
                             builder: (context, child, model) {
-                          print("model is logged: ${model.isLoggedIn()}");
+                          
                           return Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -91,6 +92,7 @@ class CustomDrawer extends StatelessWidget {
                 text: "Início",
                 controller: pageController,
                 page: 0,
+                
               ),
               DrawerTile(
                   icon: Icons.list,
